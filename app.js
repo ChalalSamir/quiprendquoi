@@ -11,6 +11,10 @@ app.get('/', function(req, res) {
     res.render('index', { title: 'Qui prend quoi ?' });
 });
 
+app.get('/party/:id', function(req, res) {
+    res.render('party', { title: 'Qui prend quoi ?' });
+});
+
 app.post('/party', function(req, res) {
     res.send('Post ok !')
 axios
