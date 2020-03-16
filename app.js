@@ -12,12 +12,20 @@ app.get('/', function(req, res) {
 });
 
 app.get('/party/:id', function(req, res) {
-    res.render('party', { title: 'Qui prend quoi ?' });
+    axios
+    .get(`${process.env.API_URL}/party/${req.params.id}`)
+    .then(({ data }) =>
+        res.render('party', {
+        party: data,
+        title: data.name
+        }),
+    )
+    .catch((err) => console.log(err));
 });
 
 app.post('/party', function(req, res) {
-    res.send('Post ok !')
-axios
+    res.send('Post ok !');
+    axios
   .post(`${process.env.API_URL}/party`, req.body)
   .then(({data}) => console.log(data))
   .catch((err) => console.error(err));
