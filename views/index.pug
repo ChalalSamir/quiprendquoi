@@ -1,3 +1,14 @@
 include ../partials/header.pug
 title= 'Qui prend quoi'
 h1 Qui prend quoi 
+
+h2 Créer un événement
+form(method="post" action="/party")
+  div
+    label(for="name") Nom de l'événement
+    input(name="name" id="name" required minlength="3" placeholder="Nouvel an")
+    label(for="author") Nom de l'auteur
+    input(name="author" id="author" required minlength="3" placeholder="Victor Hugo")
+    label(for="date") Date
+    input(name="date" id="date" minlength="3" placeholder="23/02/1999")
+  button(type="submit") Créer
