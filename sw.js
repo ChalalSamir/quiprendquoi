@@ -11,6 +11,7 @@ addEventListener('fetch', (event) => {
 	if (event.request.headers.get('Accept').includes('text/html')) {
 		event.respondWith(
 			fetch(event.request)
+
 			.then((res) => {
 				if (isPartyPage(event.request.url)) {
 					const copy = res.clone();
@@ -22,6 +23,7 @@ addEventListener('fetch', (event) => {
 					return res;
 				}
 			})
+
 			.catch(() => {
 				if (isPartyPage(event.request.url)) {
 					return caches
@@ -31,6 +33,7 @@ addEventListener('fetch', (event) => {
 					return caches.match('offline.html');
 				}
 			}),
+			
 		);
 	}
 });
